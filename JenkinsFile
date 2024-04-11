@@ -43,7 +43,7 @@ spec:
         NEXUS_CREDENTIAL_ID = 'nexuslogin'
         ARTVERSION = "${env.BUILD_ID}"
     }
-    steps{
+    
         script {
           pom = readMavenPom file: 'pom.xml'
           filesByGlob = findFiles(glob: "*.${pom.packaging}")
@@ -76,7 +76,7 @@ spec:
             error "*** File: ${artifactPath}, could not be found"
             }
         }
-    }
+    
         // nexusVersion: 'nexus3',
         // protocol: 'http',
         // nexusUrl: 'nexus.k4m.in',
