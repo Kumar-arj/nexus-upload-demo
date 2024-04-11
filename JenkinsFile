@@ -73,7 +73,7 @@ spec:
           container('build') {
         stage('Build Image') {
           docker.withRegistry( 'https://registry.hub.docker.com', 'docker' ) {
-            def customImage = docker.build('kumararj/eos-micro-services-admin:latest')
+            def customImage = docker.build('kumararj/sock-shop-micro-services-cart:latest')
             customImage.push()
           }
         }
