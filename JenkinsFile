@@ -32,6 +32,8 @@ spec:
           git credentialsId: 'git', url: 'https://github.com/Kumar-arj/nexus-upload-demo.git', branch: 'main'
         }
 
+    
+    stage('Publish to Nexus Repository Manager') {
     environment {
         NEXUS_VERSION = 'nexus3'
         NEXUS_PROTOCOL = 'http'
@@ -41,7 +43,7 @@ spec:
         NEXUS_CREDENTIAL_ID = 'nexuslogin'
         ARTVERSION = "${env.BUILD_ID}"
     }
-    stage('Publish to Nexus Repository Manager') {
+    steps{
         script {
           pom = readMavenPom file: 'pom.xml'
           filesByGlob = findFiles(glob: "*.${pom.packaging}")
@@ -74,6 +76,7 @@ spec:
             error "*** File: ${artifactPath}, could not be found"
             }
         }
+    }
         // nexusVersion: 'nexus3',
         // protocol: 'http',
         // nexusUrl: 'nexus.k4m.in',
