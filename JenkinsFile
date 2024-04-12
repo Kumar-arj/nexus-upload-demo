@@ -116,10 +116,10 @@ spec:
 """
         }
     }
-    stages('Checkout SCM') {
+    stages {
+      stage('Checkout SCM') {
           git credentialsId: 'git', url: 'https://github.com/Kumar-arj/nexus-upload-demo.git', branch: 'main'
         }
-    stages {
         stage('Build') {
             steps {
                 container('docker') {
