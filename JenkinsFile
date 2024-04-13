@@ -77,16 +77,16 @@ spec:
           }
     }
 
-    //     stage('Helm Chart') {
-    //       container('build') {
-    //         dir('charts') {
-    //           withCredentials([usernamePassword(credentialsId: 'jfrog', usernameVariable: 'username', passwordVariable: 'password')]) {
-    //           sh '/usr/local/bin/helm package micro-services-admin'
-    //           sh '/usr/local/bin/helm push-artifactory micro-services-admin-1.0.tgz https://k4meos.jfrog.io/artifactory/eos-helm-local --username $username --password $password'
-    //           }
-    //         }
-    //       }
-    //     }
+        stage('Helm Chart') {
+          container('build') {
+            dir('charts') {
+              withCredentials([usernamePassword(credentialsId: 'nexuslogin', usernameVariable: 'username', passwordVariable: 'password')]) {
+              sh '/usr/local/bin/helm package micro-services-cart'
+              sh '/usr/local/bin/helm push-artifactory micro-services-cart-1.0.tgz http://nexus.k4m.in/repository/sock-shop-helm/ --username $username --password $password'
+              }
+            }
+          }
+        }
     }
 }
 
