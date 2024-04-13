@@ -82,7 +82,7 @@ spec:
             dir('charts') {
               withCredentials([usernamePassword(credentialsId: 'nexuslogin', usernameVariable: 'username', passwordVariable: 'password')]) {
               sh '/usr/local/bin/helm package micro-services-cart'
-              sh '/usr/local/bin/helm push-artifactory micro-services-cart-1.0.tgz http://nexus.k4m.in/repository/sock-shop-helm/ --username $username --password $password'
+              sh '/usr/local/bin/helm push micro-services-cart-1.0.tgz http://nexus.k4m.in/repository/sock-shop-helm/ --username $username --password $password'
               }
             }
           }
